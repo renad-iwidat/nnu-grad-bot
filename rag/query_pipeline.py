@@ -26,10 +26,11 @@ class QueryPipeline:
         search_results = self.retrieval_engine.search_similar_chunks(question)
         
         if not search_results:
+            result = self.answer_generator.generate_answer_with_sources(question, search_results)
             return {
                 'question': question,
-                'answer': "I couldn't find any relevant information to answer your question.",
-                'sources': [],
+                'answer': result['answer'],
+                'sources': result['sources'],
                 'search_results_count': 0
             }
         
@@ -68,12 +69,12 @@ class QueryPipeline:
         search_results = self.retrieval_engine.search_similar_chunks(question)
         
         if not search_results:
-            answer = "I couldn't find any relevant information to answer your question."
+            result = self.answer_generator.generate_answer_with_sources(question, search_results)
             self.conversation_history.append({"role": "user", "content": question})
-            self.conversation_history.append({"role": "assistant", "content": answer})
+            self.conversation_history.append({"role": "assistant", "content": result['answer']})
             return {
                 'question': question,
-                'answer': answer,
+                'answer': result['answer'],
                 'sources': []
             }
         
