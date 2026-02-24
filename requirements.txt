@@ -1,2 +1,10 @@
-psycopg2-binary==2.9.9
-python-dotenv==1.0.0
+psycopg2-binary
+python-dotenv
+llama-index
+llama-index-vector-stores-postgres
+llama-index-embeddings-openai
+llama-index-llms-openai
+sqlalchemy
+fastapi
+uvicorn
+pydantic
