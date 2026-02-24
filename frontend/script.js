@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8000';
+const API_URL = 'https://nnu-grad-bot.onrender.com';
 let currentTheme = 'light';
 let sessionId = null;
 
