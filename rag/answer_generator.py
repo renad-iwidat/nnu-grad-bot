@@ -79,8 +79,28 @@ class AnswerGenerator:
     
     def generate_answer_with_sources(self, question, search_results):
         if not search_results:
+            no_answer_message = """عذراً، لم أتمكن من إيجاد معلومات محددة للإجابة على سؤالك في قاعدة البيانات المتاحة.
+
+## كيف يمكنني مساعدتك؟
+
+يمكنك:
+- إعادة صياغة السؤال بطريقة مختلفة
+- طرح سؤال أكثر تحديداً
+- التواصل مباشرة مع كلية الدراسات العليا
+
+## معلومات التواصل
+
+**العنوان:** نابلس، فلسطين
+
+**الهاتف:** 970-9-2345113 تحويلة 4538
+
+**البريد الإلكتروني:** fgs@najah.edu
+
+**الموقع الإلكتروني:** [كلية الدراسات العليا](https://www.najah.edu/ar/academics/faculties/graduate-studies/)
+
+يسعدني مساعدتك في أي استفسار آخر!"""
             return {
-                'answer': "I couldn't find any relevant information to answer your question.",
+                'answer': no_answer_message,
                 'sources': []
             }
         
