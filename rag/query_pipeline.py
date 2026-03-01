@@ -10,6 +10,15 @@ class QueryPipeline:
         self.conversation_history = []
     
     def query(self, question, include_context=False, debug=False):
+        if IntentClassifier.is_out_of_scope(question):
+            return {
+                'question': question,
+                'answer': IntentClassifier.GENERAL_RESPONSES['out_of_scope'],
+                'sources': [],
+                'search_results_count': 0,
+                'is_out_of_scope': True
+            }
+        
         if IntentClassifier.is_general_question(question):
             general_response = IntentClassifier.get_general_response(question)
             return {
